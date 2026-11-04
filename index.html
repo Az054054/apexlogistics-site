@@ -195,6 +195,13 @@
       .track-card { margin-top: -36px; padding: 20px; }
       footer.site .wrap { grid-template-columns: 1fr; }
     }
+    #receipt { display: none; }
+    @media print {
+      body * { visibility: hidden; }
+      #receipt, #receipt * { visibility: visible; }
+      #receipt { display: block; position: absolute; left: 0; top: 0; width: 100%; padding: 24px; color: #000; background: #fff; }
+      .receipt-table td { padding: 6px 4px; border-bottom: 1px solid #ccc; }
+    }
   </style>
 </head>
 <body>
@@ -451,7 +458,34 @@
         <p class="hint">Current location: ${escapeHtml(s.location || '-')}</p>
         <h3 style="margin-top:14px;font-size:1rem">History</h3>
         <ul class="events">${events}</ul>
-        <p class="hint">Last updated: ${escapeHtml(fmtTime(s.updated))}</p>`;
+        <p class="hint">Last updated: ${escapeHtml(fmtTime(s.updated))}</p>
+        ${s.shipper || s.receiver ? '<button type="button" class="btn btn-navy" id="print-receipt">Print receipt</button>' : ''}`;
+      const btn = document.getElementById('print-receipt');
+      if (btn) btn.addEventListener('click', () => printReceipt(s));
+    }
+
+    function printReceipt(s) {
+      let box = document.getElementById('receipt');
+      if (!box) {
+        box = document.createElement('div');
+        box.id = 'receipt';
+        document.body.appendChild(box);
+      }
+      box.innerHTML = `
+        <h2>Apex Global Shipping &amp; Logistics</h2>
+        <p><strong>Shipment receipt</strong></p>
+        <table class="receipt-table" style="width:100%;border-collapse:collapse">
+          <tr><td><strong>Tracking number</strong></td><td>${escapeHtml(s.tracking_number)}</td></tr>
+          <tr><td><strong>Shipper</strong></td><td>${escapeHtml(s.shipper || '-')}</td></tr>
+          <tr><td><strong>Receiver</strong></td><td>${escapeHtml(s.receiver || '-')}</td></tr>
+          <tr><td><strong>Service</strong></td><td>${escapeHtml(s.service)}</td></tr>
+          <tr><td><strong>From</strong></td><td>${escapeHtml(s.origin)}</td></tr>
+          <tr><td><strong>To</strong></td><td>${escapeHtml(s.destination)}</td></tr>
+          <tr><td><strong>Status</strong></td><td>${escapeHtml(s.status)}</td></tr>
+          <tr><td><strong>Current location</strong></td><td>${escapeHtml(s.location || '-')}</td></tr>
+          <tr><td><strong>Last updated</strong></td><td>${escapeHtml(fmtTime(s.updated))}</td></tr>
+        </table>`;
+      window.print();
     }
 
     document.getElementById('track-form').addEventListener('submit', (event) => {

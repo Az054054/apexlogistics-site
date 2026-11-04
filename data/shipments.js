@@ -156,6 +156,8 @@ window.SHIPMENTS = [
         "location": "Berlin, Germany",
         "note": "Shipment booked"
       }
-    ]
+    ],
+    "shipper": "Glory James",
+    "receiver": "Kent Throne"
   }
 ];
