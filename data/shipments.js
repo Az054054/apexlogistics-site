@@ -138,5 +138,24 @@ window.SHIPMENTS = [
         "note": "Shipment booked"
       }
     ]
+  },
+  {
+    "tracking_number": "SHP-73939",
+    "service": "Ocean freight",
+    "origin": "Germany",
+    "destination": "Kentucky, USA",
+    "status": "Picked up",
+    "location": "Berlin, Germany",
+    "eta": "About 1 week",
+    "note": "Shipment booked",
+    "updated": "2026-11-04T19:44:01+00:00",
+    "events": [
+      {
+        "time": "2026-11-04T19:44:01+00:00",
+        "status": "Picked up",
+        "location": "Berlin, Germany",
+        "note": "Shipment booked"
+      }
+    ]
   }
 ];
