@@ -3,31 +3,6 @@
 // Add a new object to the list, or change the status and add an event.
 window.SHIPMENTS = [
   {
-    "tracking_number": "SHP-1001",
-    "service": "Air freight",
-    "origin": "Hamburg",
-    "destination": "Berlin",
-    "status": "In transit",
-    "location": "Frankfurt hub",
-    "eta": "",
-    "note": "Departed on time",
-    "updated": "2026-10-31T15:30:01+00:00",
-    "events": [
-      {
-        "time": "2026-10-31T15:28:52+00:00",
-        "status": "Picked up",
-        "location": "Hamburg",
-        "note": "Demo update"
-      },
-      {
-        "time": "2026-10-31T15:30:01+00:00",
-        "status": "In transit",
-        "location": "Frankfurt hub",
-        "note": "Departed on time"
-      }
-    ]
-  },
-  {
     "tracking_number": "SHP-1002",
     "service": "Ocean freight",
     "origin": "Rotterdam",
