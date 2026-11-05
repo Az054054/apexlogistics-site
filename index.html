@@ -432,6 +432,7 @@
   <script src="data/feedback.js"></script>
   <script>
     const escapeHtml = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const fmtDate = (iso) => { const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }); };
     const fmtTime = (iso) => { const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleString(); };
 
     // ---- Shipment tracking (data/shipments.js) ----
@@ -471,9 +472,13 @@
         box.id = 'receipt';
         document.body.appendChild(box);
       }
+      const receiptDate = s.receipt_date || fmtDate(s.created || s.updated);
       box.innerHTML = `
-        <h2>Apex Global Shipping &amp; Logistics</h2>
-        <p><strong>Shipment receipt</strong></p>
+        <div style="display:flex;align-items:center;gap:12px;border-bottom:3px solid #0d1b34;padding-bottom:10px">
+          <svg width="44" height="44" viewBox="0 0 26 26" aria-hidden="true"><rect width="26" height="26" rx="5" fill="#0d1b34"/><path d="M13 3 L23 22 H18.8 L13 10.6 L7.2 22 H3 Z" fill="#f5b700"/></svg>
+          <div><h2 style="margin:0">Apex Global Shipping &amp; Logistics</h2><div>Air freight · Ocean freight · USA door-to-door delivery</div></div>
+        </div>
+        <p><strong>Shipment receipt</strong> · Date: ${escapeHtml(receiptDate)}</p>
         <table class="receipt-table" style="width:100%;border-collapse:collapse">
           <tr><td><strong>Tracking number</strong></td><td>${escapeHtml(s.tracking_number)}</td></tr>
           <tr><td><strong>Shipper</strong></td><td>${escapeHtml(s.shipper || '-')}</td></tr>

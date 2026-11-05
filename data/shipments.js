@@ -160,6 +160,7 @@ window.SHIPMENTS = [
         "location": "Cape Coral, FL",
         "note": "Received and signed"
       }
-    ]
+    ],
+    "receipt_date": "October 25, 2026"
   }
 ];
