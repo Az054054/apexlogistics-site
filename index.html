@@ -456,6 +456,7 @@
         <p>${escapeHtml(s.origin)} to ${escapeHtml(s.destination)}${s.eta ? ' · Estimated delivery: ' + escapeHtml(s.eta) : ''}</p>
         ${hold}
         ${renderTimeline(s.status)}
+        ${(s.route_states || []).length ? '<p class="hint">Route: ' + s.route_states.map(escapeHtml).join(' → ') + '</p>' : ''}
         <p class="hint">Current location: ${escapeHtml(s.location || '-')}</p>
         <h3 style="margin-top:14px;font-size:1rem">History</h3>
         <ul class="events">${events}</ul>

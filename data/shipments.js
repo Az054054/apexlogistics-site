@@ -161,6 +161,16 @@ window.SHIPMENTS = [
         "note": "Received and signed"
       }
     ],
-    "receipt_date": "October 25, 2026"
+    "receipt_date": "October 25, 2026",
+    "route_states": [
+      "California",
+      "Arizona",
+      "New Mexico",
+      "Texas",
+      "Louisiana",
+      "Mississippi",
+      "Alabama",
+      "Florida"
+    ]
   }
 ];
