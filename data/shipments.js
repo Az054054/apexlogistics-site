@@ -178,19 +178,25 @@ window.SHIPMENTS = [
     "service": "Mail",
     "origin": "Danville, CA",
     "destination": "149 Ridge Rd, Chaplin, CT 06235-2338",
-    "status": "Picked up",
-    "location": "Danville, CA",
+    "status": "In transit",
+    "location": "New York, NY",
     "eta": "Saturday, 12:00",
-    "note": "Envelope sent today",
+    "note": "On the way",
     "shipper": "Jasmine Lane",
     "receiver": "George Clark",
-    "updated": "2026-11-25T22:11:40+00:00",
+    "updated": "2026-11-26T22:17:34+00:00",
     "events": [
       {
         "time": "2026-11-25T22:11:40+00:00",
         "status": "Picked up",
         "location": "Danville, CA",
         "note": "Envelope sent today"
+      },
+      {
+        "time": "2026-11-26T22:17:34+00:00",
+        "status": "In transit",
+        "location": "New York, NY",
+        "note": "On the way"
       }
     ]
   }
